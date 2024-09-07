@@ -1,6 +1,7 @@
 import './BracketComponent.css';
 import { groupMatches } from '../../utils/groupMatches';
 import { getTeamName } from '../../utils/getTeamName';
+import { groupMatchesByDate} from '../../utils/groupMatchesByDate';
 import { useState } from 'react';
 
 const BracketComponent = ({ tournamentData }) => {
@@ -10,16 +11,7 @@ const BracketComponent = ({ tournamentData }) => {
     const groupedMatches = groupMatches(matches, teams);
     const groupeStage = groupedMatches.shift();
 
-    function groupMatchesByDate(matches) {
-        return matches.reduce((acc, match) => {
-            const matchDate = match.Date;
-            if (!acc[matchDate]) {
-                acc[matchDate] = [];
-            }
-            acc[matchDate].push(match);
-            return acc;
-        }, {});
-    }
+
 
     const groupedMatchesByDate = groupMatchesByDate(groupeStage);
 
