@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import './App.css';
 import FileParserComponent from './components/FileParserComponent/FileParserComponent';
-
+import BracketComponent from './components/BracketComponent/BracketComponent';
 
 function App() {
     const [tournamentData, setTournamentData] = useState({});
@@ -16,14 +16,19 @@ function App() {
       setIsDataHandeled(false);
       setTournamentData({});
     }
-
-    console.log(tournamentData);
+    
+    
+    
 
     return (
         <div className="wrapper">
             <h1>Football Tournament Breakdown</h1>
             {isDataHandeled ? (
+              <>
               <button onClick={handleReset}>Load New Data</button>
+              <BracketComponent tournamentData={tournamentData} />
+              </>
+                
             ) : (
                 <FileParserComponent
                     handleData={handleData}
