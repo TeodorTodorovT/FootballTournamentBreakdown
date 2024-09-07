@@ -1,17 +1,67 @@
+.groups-wrapper h2{
+    font-weight: 600;
+    text-align: center;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.groups-wrapper .matches{
+    display: flex;
+    flex-direction: row;
+}
+
+.groups-wrapper .date-group{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.groups-wrapper .date-group h3{
+    background-color: #2f59ac;
+    color: #ffffff;
+    padding: 3px;
+}
+
+.groups-wrapper .matches {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.btn{
+    display: flex;
+    justify-content: center;
+}
+
+.groups-btn {
+    border-radius: 24px;
+    border: 2px solid #3177d7;
+    color: #3177d7;
+    padding: 10px 30px;
+    cursor: pointer;
+    text-align: center;
+}
+
 .bracket {
     display: flex;
     flex-direction: row;
-    align-items: center;
+    justify-content: space-around;
+    gap: 30px;
+    width: 100%;
+    max-width: 1000px;
+
+    overflow-x: scroll;
+    overflow-y: hidden;
+    white-space: nowrap;
+}
+
+.bracket .round {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     justify-content: space-around;
 }
 
-.groups{
-    display: flex;
-    flex-direction: column;
-}
 
-.date-group{
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-}
+

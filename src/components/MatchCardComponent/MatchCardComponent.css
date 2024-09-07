@@ -1,0 +1,15 @@
+.match {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 160px;
+    border: 1px solid #dbdfe0;
+    padding: 10px;
+    background-color: #ffffff;
+    border-radius: 10px;
+}
+
+.match .team {
+    display: flex;
+    justify-content: space-between
+}

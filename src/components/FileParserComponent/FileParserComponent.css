@@ -1,5 +1,45 @@
 .files-wrapper {
     display: flex;
     flex-direction: column;
-    background-color: green;
+    align-items: center;
+}
+
+.files-wrapper .labels {
+    display: flex;
+    flex-direction: row;
+    gap: 5px;
+    align-items: center;
+}
+
+.files-wrapper h2 {
+    font-weight: 400;
+    margin: 10px 0;
+}
+
+.files-wrapper label {
+    border-radius: 24px;
+    border: 2px solid #3177d7;
+    color: #3177d7;
+    padding: 10px 30px;
+    cursor: pointer;
+    text-align: center;
+}
+
+.files-wrapper .success {
+    background-color: #3177d7;
+    color: #f1f3f8;
+}
+
+input[type='file'] {
+    display: none;
+}
+
+
+@media screen and (max-width: 600px) {
+    .files-wrapper .labels {
+        flex-direction: column;
+    }
+    .files-wrapper label {
+        width: 100%;
+    }
 }

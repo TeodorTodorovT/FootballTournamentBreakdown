@@ -25,7 +25,7 @@ function App() {
             <h1>Football Tournament Breakdown</h1>
             {isDataHandeled ? (
               <>
-              <button onClick={handleReset}>Load New Data</button>
+              <button onClick={handleReset} className='load-new'>New</button>
               <BracketComponent tournamentData={tournamentData} />
               </>
                 
