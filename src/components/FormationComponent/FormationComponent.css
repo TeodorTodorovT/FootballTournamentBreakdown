@@ -1,0 +1,41 @@
+.football-pitch {
+    background-image: url(../../assets/football-pitch.jpg);
+    width: 300px;
+    height: 424px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.football-pitch .FW,
+.football-pitch .MF,
+.football-pitch .DF,
+.football-pitch .GK {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: #ffffff;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.football-pitch .player {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-weight: 500;
+    gap: 5px;
+}
+
+.player p {
+    background-color: rgba(0,0,0,0.5);
+    border-radius: 5px;
+    padding: 5px;
+}
+
+.point {
+    width: 7px;
+    height: 7px;
+    background-color: #ffffff;
+    border-radius: 50%;
+}

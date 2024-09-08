@@ -1,5 +1,7 @@
 import { useParams } from 'react-router-dom';
 import './Details.css';
+import TeamRoasterComponent from '../TeamRoasterComponent/TeamRoasterComponent';
+import FormationComponent from '../FormationComponent/FormationComponent';
 
 const Details = () => {
     const { matchID } = useParams();
@@ -25,54 +27,17 @@ const Details = () => {
                 <p>{BTeam.Name}</p>
             </div>
 
-            <div className="formations"></div>
+            <div className="formations">
+                <FormationComponent players={ATeamPlayers}/>
+                <FormationComponent players={BTeamPlayers}/>
+            </div>
             <div className="roasters">
-                <div className="team-roaster">
-                    <h2>{ATeam.Name} roaster:</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Player</th>
-                                <th>Pos.</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {ATeamPlayers.slice(0, 11).map((player) => {
-                                return (
-                                    <tr key={player.ID}>
-                                        <td>{player.TeamNumber}</td>
-                                        <td>{player.FullName}</td>
-                                        <td>{player.Position}</td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                </div>
-                <div className="team-roaster">
-                    <h2>{BTeam.Name} roaster:</h2>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>No</th>
-                                <th>Player</th>
-                                <th>Pos.</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {BTeamPlayers.slice(0, 11).map((player) => {
-                                return (
-                                    <tr key={player.ID}>
-                                        <td>{player.TeamNumber}</td>
-                                        <td>{player.FullName}</td>
-                                        <td>{player.Position}</td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                </div>
+                <TeamRoasterComponent
+                    ATeam={ATeam}
+                    BTeam={BTeam}
+                    ATeamPlayers={ATeamPlayers}
+                    BTeamPlayers={BTeamPlayers}
+                />
             </div>
         </div>
     );
