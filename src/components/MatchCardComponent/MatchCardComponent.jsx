@@ -1,9 +1,11 @@
-import './MatchCardComponent.css'
+import './MatchCardComponent.css';
+import { Link } from 'react-router-dom';
 
-const MatchCardComponent = ({ teamA, teamB, score }) => {
+const MatchCardComponent = ({ teamA, teamB, score, matchID }) => {
     const [scoreA, scoreB] = score.split('-');
 
     return (
+        <Link to={`/details/${matchID}`} className='link'>
         <div className="match">
             <div className="team">
                 <p>{teamA}</p>
@@ -14,6 +16,7 @@ const MatchCardComponent = ({ teamA, teamB, score }) => {
                 <p>{scoreB}</p>
             </div>
         </div>
+        </Link>
     );
 };
 

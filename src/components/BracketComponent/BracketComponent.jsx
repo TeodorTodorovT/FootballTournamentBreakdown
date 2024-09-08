@@ -18,6 +18,8 @@ const BracketComponent = ({ tournamentData }) => {
         setIsHidden(!isHidden);
     };
 
+    
+
     return (
         <div>
             <div className="groups-wrapper" hidden={isHidden}>
@@ -39,6 +41,7 @@ const BracketComponent = ({ tournamentData }) => {
                                             teams
                                         )}
                                         score={match.Score}
+                                        matchID={match.ID}
                                     />
                                 ))}
                             </div>
@@ -68,6 +71,7 @@ const BracketComponent = ({ tournamentData }) => {
                                             teams
                                         )}
                                         score={match.Score}
+                                        matchID={match.ID}
                                     />
                                 );
                             })}

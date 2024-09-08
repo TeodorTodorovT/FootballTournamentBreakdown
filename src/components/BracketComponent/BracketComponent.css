@@ -20,7 +20,8 @@
 .groups-wrapper .date-group h3{
     background-color: #2f59ac;
     color: #ffffff;
-    padding: 3px;
+    padding: 3px 3px 3px 10px;
+
 }
 
 .groups-wrapper .matches {
