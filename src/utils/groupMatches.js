@@ -25,41 +25,41 @@ export function groupMatches(matches) {
         remainingMatches = remainingMatches / 2;
     }
 
+    let correctOrderRounds = [];
+    correctOrderRounds.push(rounds[0]); // Group stage
 
+    for (let i = 1; i < rounds.length - 1; i++) {
+        let round = rounds[i];
+        let nextRound = rounds[i + 1];
 
-    // Correct order of the bracet - WIP / implement later
-    // let correctOrderRounds = [];
-    // correctOrderRounds.push(rounds[0])
-    // for (let i = 1; i <= rounds.length; i++) {
-    //     let round = rounds[i];
-    //     let nextRound;
-    //     if (rounds[i + 1]) {
-    //         nextRound = rounds[i + 1];
-    //     } else {
-    //         break;
-    //     }
+        let reorderedRound = [];
 
-    //     for(let i = 0; i <= round.length; i++){
-    //       // console.log(round[i]);
-    //       console.log();
-    //       const winnerA = round.find(match => (match.ATeamID || match.BTeamID) === nextRound[i]?.ATeamID)
-    //       const winnerB = round.find(match => (match.ATeamID || match.BTeamID) === nextRound[i]?.BTeamID)
+        nextRound.forEach((nextMatch) => {
+            const winnerA = round.find((match) => {
+                return (
+                    match.ATeamID === nextMatch.ATeamID ||
+                    match.BTeamID === nextMatch.ATeamID
+                );
+            });
 
-    //       console.log(winnerA);
-    //       console.log(winnerB);
-          
-          
+            const winnerB = round.find((match) => {
+                return (
+                    match.ATeamID === nextMatch.BTeamID ||
+                    match.BTeamID === nextMatch.BTeamID
+                );
+            });
 
-    //       // correctOrderRounds.push(matches[winnerA.ID]);
-    //       // correctOrderRounds.push(matches[winnerB.ID]);
-          
-    //     }
+            if (winnerA && winnerB) {
+                reorderedRound.push(winnerA);
+                reorderedRound.push(winnerB);
+            }
+        });
 
-        
-    // }
+        correctOrderRounds.push(reorderedRound);
+    }
 
+    const lastRound = rounds[rounds.length - 1];
+    correctOrderRounds.push(lastRound);
 
-    
-
-    return rounds;
+    return correctOrderRounds.length > 0 ? correctOrderRounds : rounds;
 }

@@ -5,10 +5,7 @@ import BracketComponent from '../BracketComponent/BracketComponent';
 
 function Home() {
     const [tournamentData, setTournamentData] = useState(JSON.parse(localStorage.getItem('data')) || {});
-    const [isDataHandeled, setIsDataHandeled] = useState(tournamentData ? true : false);
-
-    console.log(tournamentData);
-    console.log(isDataHandeled);
+    const [isDataHandeled, setIsDataHandeled] = useState(Object.keys(tournamentData).length === 0 ? false : true);
     
     
 

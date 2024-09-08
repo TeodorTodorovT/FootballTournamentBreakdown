@@ -32,10 +32,13 @@ const FileParserComponent = ({ handleData, isDataHandeled }) => {
 
     const handleFileUpload = (event, type) => {
         const file = event.target.files[0];
+
+        
         const reader = new FileReader();
 
         reader.onload = (e) => {
             const text = e.target.result;
+
             const parsedData = parseCSV(text);
 
             switch (type) {
@@ -45,6 +48,8 @@ const FileParserComponent = ({ handleData, isDataHandeled }) => {
                     } else {
                         setPlayers([]);
                         window.alert('Invalid players data');
+                        event.target.value = null
+                        
                     }
                     break;
                 case 'teams':
@@ -53,6 +58,7 @@ const FileParserComponent = ({ handleData, isDataHandeled }) => {
                     } else {
                         setTeams([]);
                         window.alert('Invalid teams data');
+                        event.target.value = null
                     }
                     break;
                 case 'matches':
@@ -61,6 +67,7 @@ const FileParserComponent = ({ handleData, isDataHandeled }) => {
                     } else {
                         setMatches([]);
                         window.alert('Invalid matches data');
+                        event.target.value = null
                     }
                     break;
                 case 'records':
@@ -69,10 +76,14 @@ const FileParserComponent = ({ handleData, isDataHandeled }) => {
                     } else {
                         setRecords([]);
                         window.alert('Invalid records data');
+                        event.target.value = null
                     }
                     break;
-                default:
+                default: {
                     window.alert('Unknown type');
+                    event.target.value = null
+                    
+                }
             }
         };
 
@@ -83,46 +94,61 @@ const FileParserComponent = ({ handleData, isDataHandeled }) => {
         <div className="files-wrapper">
             <h2>Upload CSV Files</h2>
             <div className="labels">
-            <label
-                htmlFor="players"
-                className={players.length > 0 ? 'success' : null}
-            >
-                Players
-            </label>
-            <input
-                id="players"
-                type="file"
-                accept=".csv"
-                onChange={(event) => handleFileUpload(event, 'players')}
-                placeholder="Upload Players CSV"
-            />
+                <label
+                    htmlFor="players"
+                    className={players.length > 0 ? 'success' : null}
+                >
+                    Players
+                </label>
+                <input
+                    id="players"
+                    type="file"
+                    accept=".csv"
+                    onChange={(event) => handleFileUpload(event, 'players')}
+                    placeholder="Upload Players CSV"
+                />
 
-            <label htmlFor="teams" className={teams.length > 0 ? 'success' : null}>Teams</label>
-            <input
-                id="teams"
-                type="file"
-                accept=".csv"
-                onChange={(event) => handleFileUpload(event, 'teams')}
-                placeholder="Upload Teams CSV"
-            />
+                <label
+                    htmlFor="teams"
+                    className={teams.length > 0 ? 'success' : null}
+                >
+                    Teams
+                </label>
+                <input
+                    id="teams"
+                    type="file"
+                    accept=".csv"
+                    onChange={(event) => handleFileUpload(event, 'teams')}
+                    placeholder="Upload Teams CSV"
+                />
 
-            <label htmlFor="matches" className={matches.length > 0 ? 'success' : null}>Matches</label>
-            <input
-                id="matches"
-                type="file"
-                accept=".csv"
-                onChange={(event) => handleFileUpload(event, 'matches')}
-                placeholder="Upload Matches CSV"
-            />
+                <label
+                    htmlFor="matches"
+                    className={matches.length > 0 ? 'success' : null}
+                >
+                    Matches
+                </label>
+                <input
+                    id="matches"
+                    type="file"
+                    accept=".csv"
+                    onChange={(event) => handleFileUpload(event, 'matches')}
+                    placeholder="Upload Matches CSV"
+                />
 
-            <label htmlFor="records" className={records.length > 0 ? 'success' : null}>Records</label>
-            <input
-                id="records"
-                type="file"
-                accept=".csv"
-                onChange={(event) => handleFileUpload(event, 'records')}
-                placeholder="Upload Records CSV"
-            />
+                <label
+                    htmlFor="records"
+                    className={records.length > 0 ? 'success' : null}
+                >
+                    Records
+                </label>
+                <input
+                    id="records"
+                    type="file"
+                    accept=".csv"
+                    onChange={(event) => handleFileUpload(event, 'records')}
+                    placeholder="Upload Records CSV"
+                />
             </div>
         </div>
     );

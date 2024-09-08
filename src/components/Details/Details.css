@@ -47,13 +47,17 @@
     padding: 5px 0;
 }
 
-.team-roaster table tr:nth-child(even){
+.team-roaster table tbody tr:nth-child(odd){
     background-color: #b7b7b7;
 }
 
 
 @media screen and (max-width: 600px) {
     .details-wrapper .roasters{
+        flex-direction: column;
+    }
+
+    .details-wrapper .teams{
         flex-direction: column;
     }
 }
