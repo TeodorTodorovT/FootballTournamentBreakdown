@@ -1,0 +1,44 @@
+.results-wrapper h2 {
+    font-weight: 600;
+    text-align: center;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+.results-wrapper .results {
+    display: flex;
+    flex-direction: column;
+}
+
+.results-wrapper .date-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    margin-bottom: 10px;
+}
+
+.results-wrapper .date-group h3 {
+    background-color: #2f59ac;
+    color: #ffffff;
+    padding: 3px 3px 3px 10px;
+}
+
+.results-wrapper .results {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.results-wrapper .results .matches {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.no-results {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+    font-weight: 500;
+    font-size: 24px;
+}
