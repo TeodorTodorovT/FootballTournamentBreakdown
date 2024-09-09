@@ -5,6 +5,7 @@ import {
     validateTeamsData,
     validateMatchesData,
     validateRecordsData,
+    parseDate,
 } from '../../utils/validators';
 
 import './FileParserComponent.css';
@@ -14,6 +15,7 @@ const FileParserComponent = ({ handleData, isDataHandeled }) => {
     const [teams, setTeams] = useState([]);
     const [matches, setMatches] = useState([]);
     const [records, setRecords] = useState([]);
+    
 
     if (
         players.length > 0 &&
@@ -33,7 +35,6 @@ const FileParserComponent = ({ handleData, isDataHandeled }) => {
     const handleFileUpload = (event, type) => {
         const file = event.target.files[0];
 
-        
         const reader = new FileReader();
 
         reader.onload = (e) => {
@@ -48,8 +49,7 @@ const FileParserComponent = ({ handleData, isDataHandeled }) => {
                     } else {
                         setPlayers([]);
                         window.alert('Invalid players data');
-                        event.target.value = null
-                        
+                        event.target.value = null;
                     }
                     break;
                 case 'teams':
@@ -58,16 +58,26 @@ const FileParserComponent = ({ handleData, isDataHandeled }) => {
                     } else {
                         setTeams([]);
                         window.alert('Invalid teams data');
-                        event.target.value = null
+                        event.target.value = null;
                     }
                     break;
                 case 'matches':
                     if (validateMatchesData(parsedData)) {
-                        setMatches(parsedData);
+                        setMatches(
+                            parsedData.map((match) => {
+                                return { ID: match.ID, 
+                                    ATeamID: match.ATeamID,
+                                    BTeamID: match.BTeamID ,
+                                    Date: parseDate(match.Date),
+                                    Score: match.Score
+                                };
+                            })
+                        );
+                        
                     } else {
                         setMatches([]);
                         window.alert('Invalid matches data');
-                        event.target.value = null
+                        event.target.value = null;
                     }
                     break;
                 case 'records':
@@ -76,13 +86,12 @@ const FileParserComponent = ({ handleData, isDataHandeled }) => {
                     } else {
                         setRecords([]);
                         window.alert('Invalid records data');
-                        event.target.value = null
+                        event.target.value = null;
                     }
                     break;
                 default: {
                     window.alert('Unknown type');
-                    event.target.value = null
-                    
+                    event.target.value = null;
                 }
             }
         };

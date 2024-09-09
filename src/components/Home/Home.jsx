@@ -3,6 +3,7 @@ import './Home.css';
 import FileParserComponent from '../FileParserComponent/FileParserComponent';
 import BracketComponent from '../BracketComponent/BracketComponent';
 
+
 function Home() {
     const [tournamentData, setTournamentData] = useState(JSON.parse(localStorage.getItem('data')) || {});
     const [isDataHandeled, setIsDataHandeled] = useState(Object.keys(tournamentData).length === 0 ? false : true);

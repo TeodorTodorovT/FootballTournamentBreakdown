@@ -1,5 +1,4 @@
 function parseCSV(csvText) {
-    
     const rows = csvText.trim().split('\n');
     const headers = rows[0].split(',');
     const data = rows.slice(1).map((row) => {
@@ -55,21 +54,41 @@ function validateRecordsData(recordsData) {
 }
 
 
-// WIP - to be tested further
-// function parseDate(dateString) {
-//     const dateFormats = [
-//         /\d{2}\/\d{2}\/\d{4}/, // DD/MM/YYYY or MM/DD/YYYY
-//         /\d{4}-\d{2}-\d{2}/, // ISO format (YYYY-MM-DD)
-//     ];
+function parseDate(dateString) {
+    const regexPatterns = {
+      mmddyyyy: /\d{1,2}\/\d{1,2}\/\d{4}/, // MM/DD/YYYY or DD/MM/YYYY
+      yyyymmdd: /\d{4}-\d{2}-\d{2}/, // ISO format YYYY-MM-DD
+      ddmmyyyy: /\d{2}\.\d{2}\.\d{4}/, // DD.MM.YYYY
+      textual: /\w+ \d{1,2}, \d{4}/, // June 14, 2024
+      fullDay: /\w{3}, \d{1,2} \w{3} \d{4}/, // Fri, 14 Jun 2024
+    };
+  
+    if (regexPatterns.mmddyyyy.test(dateString)) {
+      const [part1, part2, year] = dateString.split('/');
+      const month = part1 > 12 ? part2 : part1; // check if MM/DD or DD/MM
+      const day = part1 > 12 ? part1 : part2; // check if MM/DD or DD/MM
+      return new Date(`${year}-${month}-${day}`).toDateString().slice(0, 15);
+    }
+  
+    if (regexPatterns.yyyymmdd.test(dateString)) {
+      return new Date(dateString).toDateString().slice(0, 15);
+    }
 
-//     for (const format of dateFormats) {
-//         if (format.test(dateString)) {
-//             return new Date(dateString);
-//         }
-//     }
-
-//     return null;
-// }
+    if (regexPatterns.ddmmyyyy.test(dateString)) {
+      const [day, month, year] = dateString.split('.');
+      return new Date(`${year}-${month}-${day}`).toDateString().slice(0, 15);
+    }
+  
+    if (regexPatterns.textual.test(dateString)) {
+      return new Date(dateString).toDateString().slice(0, 15);
+    }
+  
+    if (regexPatterns.fullDay.test(dateString)) {
+      return new Date(dateString).toDateString().slice(0, 15);
+    }
+  
+    return null;
+  }
 
 export {
     parseCSV,
@@ -77,5 +96,5 @@ export {
     validateTeamsData,
     validateMatchesData,
     validateRecordsData,
-    // parseDate,
+    parseDate,
 };

@@ -9,6 +9,7 @@ const BracketComponent = ({ tournamentData }) => {
     const [isHidden, setIsHidden] = useState(true);
 
     const { matches, teams } = tournamentData;
+    
     const groupedMatches = groupMatches(matches, teams);
     const groupeStage = groupedMatches.shift();
 
